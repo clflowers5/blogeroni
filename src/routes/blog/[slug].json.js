@@ -1,28 +1,22 @@
-import posts from './_posts.js';
+import { getPost } from './_posts';
 
-const lookup = new Map();
-posts.forEach(post => {
-	lookup.set(post.slug, JSON.stringify(post));
-});
+const postLookup = new Map();
 
 export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
-	const { slug } = req.params;
+  const { slug } = req.params;
 
-	if (lookup.has(slug)) {
-		res.writeHead(200, {
-			'Content-Type': 'application/json'
-		});
+  if (!postLookup.has(slug)) {
+    const post = getPost(slug);
+    postLookup.set(slug, JSON.stringify(post));
+  }
 
-		res.end(lookup.get(slug));
-	} else {
-		res.writeHead(404, {
-			'Content-Type': 'application/json'
-		});
+  const json = postLookup.get(slug);
 
-		res.end(JSON.stringify({
-			message: `Not found`
-		}));
-	}
+  if (json) {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(json);
+  } else {
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: `Not found` }));
+  }
 }
