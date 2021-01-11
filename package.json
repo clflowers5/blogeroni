@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "run-p watch:*",
     "build": "npm run build:tailwind && sapper build --legacy",
+    "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
     "watch:dev": "sapper dev",
-    "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
-    "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css"
+    "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w"
   },
   "dependencies": {
     "compression": "^1.7.1",
@@ -27,7 +27,6 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
-    "@fullhuman/postcss-purgecss": "^3.1.3",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",

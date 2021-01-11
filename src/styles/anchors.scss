@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+:global {
+  a {
+    color: $font-color-primary;
+    text-decoration: underline;
+
+    &:hover {
+      color: scale-color($font-color-primary, $lightness: +35%);
+    }
+
+    &.secondary {
+      // nav
+      text-decoration: none;
+      padding: 1em 0.5em;
+      display: block;
+      font-weight: $font-weight-normal;
+    }
+  }
+}
