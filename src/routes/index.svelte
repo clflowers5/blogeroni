@@ -14,10 +14,6 @@
 		margin: 0 0 0.5em 0;
 	}
 
-	figure {
-		margin: 0 0 1em 0;
-	}
-
 	p {
 		margin: 1em auto;
 	}

@@ -49,10 +49,17 @@ function processMarkdown(markdown) {
   const metadata = {};
   frontMatter.split('\n').forEach(pair => {
     const colonIndex = pair.indexOf(':');
-    metadata[pair.slice(0, colonIndex).trim()] = pair
-      .slice(colonIndex + 1)
-      .trim();
+    const metadataKey = pair.slice(0, colonIndex).trim();
+    metadata[metadataKey] = pair.slice(colonIndex + 1).trim();
   });
+
+  // categories will be delimited by semi-colons (convention only)
+  if (metadata['categories']) {
+    metadata['categories'] = metadata['categories']
+      .split(';')
+      .map(str => str.trim())
+      .filter(str => !!str);
+  }
 
   return { metadata, content };
 }
