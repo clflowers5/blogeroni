@@ -6,6 +6,7 @@ import hljs from 'highlight.js';
 function getPosts() {
   return fs.readdirSync('posts')
     .filter(file => path.extname(file) === '.md')
+    // -3 length of '.md'
     .map(file => file.slice(0, -3))
     .map(getPost).sort((a, b) => {
       return a.metadata.pubdate < b.metadata.pubdate ? 1 : -1;

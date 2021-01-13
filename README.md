@@ -150,3 +150,10 @@ npm install -D @sveltejs/svelte-virtual-list
 ## Bugs and feedback
 
 Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
+
+
+## Todo / Ideas
+See if pCloud has a private API - I could upload blog
+posts to pCloud from any machine and utilize it as a cms.
+
+mark index.css in static as ignored
