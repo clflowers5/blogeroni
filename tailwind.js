@@ -1,8 +1,13 @@
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.svelte'
-  ],
+  purge: {
+    content: [
+      './src/**/*.html',
+      './src/**/*.svelte'
+    ],
+    options: {
+      whitelistPatternsChildren: [/prose$/]
+    }
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
