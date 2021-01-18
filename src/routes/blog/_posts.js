@@ -9,7 +9,14 @@ function getPosts() {
     // -3 length of '.md'
     .map(file => file.slice(0, -3))
     .map(getPost).sort((a, b) => {
-      return a.metadata.pubdate < b.metadata.pubdate ? 1 : -1;
+      try {
+        const dateA = new Date(a.metadata.pubdate);
+        const dateB = new Date(b.metadata.pubdate);
+        return dateA < dateB ? 1 : -1;
+      } catch (e) {
+        console.warn('Post does not have a metadata pubdate. This should be fixed!')
+        return 0;
+      }
     });
 }
 
