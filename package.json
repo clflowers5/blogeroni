@@ -6,7 +6,7 @@
     "dev": "run-p watch:*",
     "build": "npm run build:tailwind && sapper build --legacy",
     "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
-    "export": "npm run build:tailwind && sapper export --legacy",
+    "export": "NODE_ENV=production npm run build:tailwind && sapper export --legacy",
     "start": "node __sapper__/build",
     "watch:dev": "sapper dev",
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w"
